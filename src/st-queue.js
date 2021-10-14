@@ -1,3 +1,4 @@
+const { resetHistory } = require('sinon');
 const { NotImplementedError } = require('../extensions/index.js');
 
 // const { ListNode } = require('../extensions/list-node.js');
@@ -14,20 +15,29 @@ const { NotImplementedError } = require('../extensions/index.js');
  * queue.getUnderlyingList() // returns { value: 3, next: null }
  */
 module.exports = class Queue {
-
+  constructor () {
+    this.queue = [];
+  }
   getUnderlyingList() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+     let queueList = null;
+    for (let i = this.queue.length - 1; i >= 0; i) {
+      queueList = { value: this.queue[i], rest: queueList };
+     
+    }
+    return queueList;
   }
 
-  enqueue(/* value */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+  enqueue(value) {
+    this.topElement = this.queue.push(value);
+    
   }
 
   dequeue() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    this.topElement = this.queue.shift();
+    return this.topElement;
   }
 
 }
+
+
+/* npm run test -- test/st-queue.test.js */
