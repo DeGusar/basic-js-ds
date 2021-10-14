@@ -1,3 +1,4 @@
+const { resetHistory } = require('sinon');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
@@ -12,19 +13,28 @@ const { NotImplementedError } = require('../extensions/index.js');
  * stack.pop(); // undefined
  *
  */
- module.exports = class Stack {
-  push(/* element */) {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+module.exports = class Stack {
+  constructor() {
+    this.stack = [];
+ }
+   
+  push(element) {
+    this.stack.push(element);
+    this.topElement = element;
+    console.log(this.topElement)
   }
 
   pop() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+   
+    this.topElement = this.stack.pop();
+   return  this.topElement
+   
   }
 
   peek() {
-    throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
+    return this.stack[this.stack.length - 1];
   }
 }
+
+
+/* npm run test -- test/st-stack.test.js */
