@@ -20,8 +20,8 @@ module.exports = class Queue {
   }
   getUnderlyingList() {
      let queueList = null;
-    for (let i = this.queue.length - 1; i >= 0; i) {
-      queueList = { value: this.queue[i], rest: queueList };
+    for (let i = this.queue.length - 1; i >= 0; i--) {
+      queueList = { value: this.queue[i], next: queueList };
      
     }
     return queueList;
