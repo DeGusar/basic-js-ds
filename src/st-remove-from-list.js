@@ -1,3 +1,4 @@
+const { useFakeServer } = require('sinon');
 const { NotImplementedError } = require('../extensions/index.js');
 
 /**
@@ -19,7 +20,32 @@ const { NotImplementedError } = require('../extensions/index.js');
  * }
  */
 
-module.exports = function removeKFromList(/* l, k */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+/*  convertArrayToList([3, 1, 2, 3, 4, 5]); */
+
+
+
+
+module.exports = function removeKFromList(l, k) {
+    
+    let current=l ;
+    if (l.value === k) {
+        l = l.next;
+    }
+    
+    while (current.next !== null) {
+            if (current.next.value === k) {
+                current.next = current.next.next;
+            } 
+             current = current.next;
+            
+                  
+    }
+    return l
+    } 
+        
+    
+    
+
+
+
+/* npm run test -- test/st-remove-from-list.test.js */
